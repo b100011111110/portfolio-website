@@ -18,8 +18,8 @@
 
 <body class="font-body selection:bg-primary selection:text-on-primary" data-mode="connect">
     <header
-        class="bg-[#0a0f0d] dark:bg-[#0a0f0d] docked full-width top-0 z-50 border-b-4 border-[#717773] flex justify-between items-center w-full px-10 py-6 h-24 sticky">
-        <div class="text-3xl font-black text-[#a1ffc2] tracking-tighter italic">
+        class="bg-[#0a0f0d] dark:bg-[#0a0f0d] docked full-width top-0 z-50 border-b-4 border-[#717773] flex justify-between items-center w-full px-6 md:px-10 py-6 h-24 sticky">
+        <div class="text-2xl md:text-3xl font-black text-[#a1ffc2] tracking-tighter italic">
             <a href="#hero">SHRI HARI S.</a>
         </div>
         <nav class="hidden md:flex gap-12">
@@ -34,14 +34,41 @@
             <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
                 href="#contact">CONTACT</a>
         </nav>
-        <button
-            class="bg-primary text-background px-6 py-3 font-label font-bold uppercase tracking-widest active-hardware-shift hover:bg-secondary transition-all">DOWNLOAD_CV</button>
+        <div class="flex items-center gap-4">
+            <button
+                class="hidden md:block bg-primary text-background px-6 py-3 font-label font-bold uppercase tracking-widest active-hardware-shift hover:bg-secondary transition-all">DOWNLOAD_CV</button>
+            <button id="mobile-menu-btn" class="md:hidden text-primary p-2">
+                <span class="material-symbols-outlined text-4xl">menu</span>
+            </button>
+        </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-background z-[100] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 md:hidden">
+        <button id="close-menu-btn" class="absolute top-8 right-10 text-primary">
+            <span class="material-symbols-outlined text-5xl">close</span>
+        </button>
+        <nav class="flex flex-col items-center gap-8">
+            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
+                href="#projects">REPOSITORIES</a>
+            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
+                href="#stack">STACK</a>
+            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
+                href="#experience">EXPERIENCE</a>
+            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
+                href="#education">EDUCATION</a>
+            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
+                href="#contact">CONTACT</a>
+        </nav>
+        <button
+            class="mt-8 bg-primary text-background px-8 py-4 font-label font-bold uppercase tracking-widest active-hardware-shift">DOWNLOAD_CV</button>
+    </div>
     <main class="w-full">
         <!-- Hero Section -->
         <section id="hero"
-            class="min-h-screen flex flex-col justify-center px-10 relative overflow-hidden bg-background">
-            <div class="absolute right-[-10%] top-[10%] w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full">
+            class="min-h-screen flex flex-col justify-center px-6 md:px-10 relative overflow-hidden bg-background">
+            <div class="absolute right-[-10%] top-[10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary/5 blur-[80px] md:blur-[120px] rounded-full">
             </div>
             <div class="z-10 max-w-7xl">
                 <div
@@ -49,7 +76,7 @@
                     <span class="w-12 h-1 bg-secondary"></span>
                     PERFORMANCE_ORIENTED // EX-PRODUCT ENGINEER @ EDGEVERVE
                 </div>
-                <h1 class="text-[12vw] leading-[0.85] font-black uppercase tracking-tighter mb-8 font-headline">SHRI
+                <h1 class="text-6xl sm:text-7xl md:text-[12vw] leading-[0.85] font-black uppercase tracking-tighter mb-8 font-headline">SHRI
                     HARI S.</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
                     <p class="text-xl md:text-2xl text-on-surface-variant leading-relaxed font-medium max-w-xl">
@@ -59,7 +86,7 @@
                 </div>
             </div>
             <div
-                class="absolute bottom-10 left-10 flex flex-col md:flex-row gap-6 md:gap-16 font-label text-xs tracking-widest text-outline">
+                class="absolute bottom-10 left-6 md:left-10 flex flex-col md:flex-row gap-6 md:gap-16 font-label text-[10px] md:text-xs tracking-widest text-outline">
                 <div>LOCATION: BANGALORE, INDIA</div>
                 <div class="flex gap-8">
                     <a href="https://github.com/b100011111110"

@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">done</span> COPIED!';
                                     setTimeout(() => {
                                         feedback.classList.add('opacity-0');
-                                        copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">content_copy</span> CLICK_TO_COPY';
+                                        copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm text-center">content_copy</span> CLICK_TO_COPY';
                                     }, 2000);
                                 });
                             });
@@ -112,4 +112,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         }
     });
+
+    // Mobile Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuBtn && closeMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.style.overflow = '';
+            });
+        });
+    }
 });
