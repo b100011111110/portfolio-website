@@ -80,6 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
                             card.classList.add(randomClass);
                         });
                     }
+                    if (id === 'contact') {
+                        const copyBtn = container.querySelector('#copy-email-btn');
+                        const feedback = container.querySelector('#copy-feedback');
+                        const email = 'sshrihari2302@gmail.com';
+
+                        if (copyBtn) {
+                            copyBtn.addEventListener('click', () => {
+                                navigator.clipboard.writeText(email).then(() => {
+                                    feedback.classList.remove('opacity-0');
+                                    copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">done</span> COPIED!';
+                                    setTimeout(() => {
+                                        feedback.classList.add('opacity-0');
+                                        copyBtn.innerHTML = '<span class="material-symbols-outlined text-sm">content_copy</span> CLICK_TO_COPY';
+                                    }, 2000);
+                                });
+                            });
+                        }
+                    }
                 })
                 .catch(err => {
                     console.error(`Failed to load section: ${id}`, err);
