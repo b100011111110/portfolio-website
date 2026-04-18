@@ -42,7 +42,8 @@ tailwind.config = {
                 "inverse-primary": "#006d40",
                 "surface-dim": "#0a0f0d",
                 "surface-tint": "#a1ffc2",
-                "surface": "#0a0f0d"
+                "surface": "#0a0f0d",
+                "tertiary": "#beee00"
             },
             "borderRadius": {
                 "DEFAULT": "0px",
@@ -71,6 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(html => {
                     container.innerHTML = html;
+                    if (id === 'stack') {
+                        const cards = container.querySelectorAll('.skill-card');
+                        const hoverClasses = ['hover:bg-primary', 'hover:bg-secondary', 'hover:bg-tertiary'];
+                        cards.forEach(card => {
+                            const randomClass = hoverClasses[Math.floor(Math.random() * hoverClasses.length)];
+                            card.classList.add(randomClass);
+                        });
+                    }
                 })
                 .catch(err => {
                     console.error(`Failed to load section: ${id}`, err);
