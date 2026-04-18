@@ -137,4 +137,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // Spline Background Scroll Logic
+    const splineBg = document.getElementById('spline-bg');
+    const heroSection = document.getElementById('hero');
+    
+    if (splineBg && heroSection) {
+        window.addEventListener('scroll', () => {
+            const heroHeight = heroSection.offsetHeight;
+            const scrollPos = window.scrollY;
+            
+            // Fade out as we scroll past hero
+            if (scrollPos > heroHeight) {
+                splineBg.style.opacity = '0';
+                splineBg.style.visibility = 'hidden';
+            } else {
+                splineBg.style.opacity = '1';
+                splineBg.style.visibility = 'visible';
+            }
+        });
+    }
 });
