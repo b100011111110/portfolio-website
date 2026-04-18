@@ -156,4 +156,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // System Initialization / Loading Screen Logic
+    const systemLoader = document.getElementById('system-loader');
+    const splineViewer = document.querySelector('spline-viewer');
+    let isLoaded = false;
+
+    const hideLoader = () => {
+        if (isLoaded || !systemLoader) return;
+        isLoaded = true;
+        systemLoader.style.opacity = '0';
+        setTimeout(() => {
+            systemLoader.style.display = 'none';
+        }, 700); // Matches the CSS transition duration
+    };
+
+    if (splineViewer) {
+        // Spline emits a 'load' event when the 3D scene is ready
+        splineViewer.addEventListener('load', hideLoader);
+        
+        // Failsafe: Force hide the loader after 3 seconds even if Spline fails
+        setTimeout(hideLoader, 3000);
+    } else {
+        // If no Spline viewer is found, hide immediately
+        hideLoader();
+    }
 });
