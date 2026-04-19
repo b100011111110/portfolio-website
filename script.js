@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(id => {
         const container = document.getElementById(id);
         if (container) {
-            fetch(`sections/${id}.html`)
+            fetch(`sections/${id}.html?v=${new Date().getTime()}`)
                 .then(response => {
                     if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                     return response.text();
