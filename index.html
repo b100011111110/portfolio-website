@@ -1,184 +1,69 @@
 <!DOCTYPE html>
-<html class="dark bg-[#0a0f0d]" lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SHRI HARI S. // Portfolio</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script src="script.js?v=1776570246028"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Space+Grotesk:wght@300;500;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.86/build/spline-viewer.js"></script>
-    <link rel="icon" type="image/png" href="4553018.png" />
-
-    <style>
-        /* CRITICAL: Bypassing CSS cache by placing this directly in HTML */
-        #spline-bg {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            z-index: 0 !important;
-            pointer-events: none !important;
-            background: transparent !important;
-            transition: opacity 0.5s ease-out;
-        }
-
-        main {
-            position: relative;
-            z-index: 10;
-            background: transparent;
-        }
-
-        section {
-            position: relative;
-            z-index: 20;
-            background-color: #0a0f0d !important;
-        }
-
-        #hero {
-            background-color: transparent !important;
-            z-index: 10;
-        }
-    </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Shri Hari S — developer focused on AI workflows and Model Context Protocol (MCP), pursuing an M.Tech in Artificial Intelligence at MIT Manipal. Explore projects, experience, and certifications.">
+<meta name="theme-color" content="#faf9f6">
+<script>
+(function () {
+    var theme;
+    try { theme = localStorage.getItem('portfolio-theme'); } catch (e) {}
+    if (theme !== 'light' && theme !== 'dark') theme = 'light';
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#151519' : '#faf9f6';
+})();
+</script>
+<title>Shri Hari S — AI Workflows & MCP</title>
+<link rel="icon" type="image/png" href="4553018.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"><script src="script.js" defer></script><script src="neural-network.js" defer></script>
 </head>
-
-<body class="font-body selection:bg-primary selection:text-on-primary bg-transparent text-[#f9fdf9]" data-mode="connect"
-    style="margin: 0; cursor: crosshair;">
-
-    <!-- Initial Loading Screen -->
-    <div id="system-loader"
-        class="fixed inset-0 z-[9999] bg-[#0a0f0d] flex items-center justify-center transition-opacity duration-700 ease-out">
-        <div
-            class="font-label text-primary text-xl md:text-2xl tracking-[0.3em] font-black uppercase flex items-center gap-4 border-2 border-primary p-6">
-            <span class="material-symbols-outlined animate-spin" style="font-size: 2rem;">sync</span>
-            <span>INITIALIZING_SYSTEM...</span>
-        </div>
-    </div>
-
-    <!-- Unblockable Failsafe Script for Loader -->
-    <script>
-        (function () {
-            var loader = document.getElementById('system-loader');
-            var hide = function () {
-                if (!loader || loader.style.display === 'none') return;
-                loader.style.opacity = '0';
-                setTimeout(function () { loader.style.display = 'none'; }, 700);
-            };
-            window.addEventListener('load', hide);
-            setTimeout(hide, 2500); // 2.5s absolute maximum
-        })();
-    </script>
-
-    <!-- Spline Background Layer -->
-    <div id="spline-bg">
-        <spline-viewer style="width: 100vw; height: 100vh; display: block;"
-            url="https://prod.spline.design/Ydmcprzb4Wn33UHF/scene.splinecode"></spline-viewer>
-    </div>
-    <div class="noise-overlay" style="z-index: 0;"></div>
-    <header
-        class="bg-[#0a0f0d]/80 backdrop-blur-md docked full-width top-0 z-50 relative border-b-4 border-[#717773] flex justify-between items-center w-full px-6 md:px-10 py-6 h-24 sticky">
-        <div class="flex items-center gap-4">
-            <a href="#hero" class="hover:opacity-80 transition-opacity">
-                <span class="text-2xl md:text-3xl font-black text-[#a1ffc2] tracking-tighter italic">SHRI HARI S</span>
-            </a>
-        </div>
-        <nav class="hidden md:flex gap-12">
-            <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
-                href="#projects">REPOSITORIES</a>
-            <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
-                href="#stack">STACK</a>
-            <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
-                href="#experience">EXPERIENCE</a>
-            <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
-                href="#education">EDUCATION</a>
-            <a class="text-[#717773] font-bold font-['Manrope'] font-black uppercase tracking-tighter hover:bg-primary hover:text-background transition-all duration-75 px-2"
-                href="#contact">CONTACT</a>
-        </nav>
-        <div class="flex items-center gap-4">
-            <a href="resume_Shri_Hari_S.pdf" download="resume_Shri_Hari_S.pdf"
-                class="hidden md:block bg-primary text-background px-6 py-3 font-label font-bold uppercase tracking-widest active-hardware-shift hover:bg-secondary transition-all">DOWNLOAD
-                CV</a>
-            <button id="mobile-menu-btn" class="md:hidden text-primary p-2">
-                <span class="material-symbols-outlined text-4xl">menu</span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu"
-        class="fixed inset-0 bg-background z-[100] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 md:hidden">
-        <button id="close-menu-btn" class="absolute top-8 right-10 text-primary">
-            <span class="material-symbols-outlined text-5xl">close</span>
-        </button>
-        <nav class="flex flex-col items-center gap-8">
-            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
-                href="#projects">REPOSITORIES</a>
-            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
-                href="#stack">STACK</a>
-            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
-                href="#experience">EXPERIENCE</a>
-            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
-                href="#education">EDUCATION</a>
-            <a class="mobile-nav-link text-4xl font-black uppercase tracking-tighter text-on-surface hover:text-primary transition-colors"
-                href="#contact">CONTACT</a>
-        </nav>
-        <a href="resume_Shri_Hari_S.pdf" download="resume_Shri_Hari_S.pdf"
-            class="mt-8 bg-primary text-background px-8 py-4 font-label font-bold uppercase tracking-widest active-hardware-shift">DOWNLOAD_CV</a>
-    </div>
-    <main class="w-full relative z-10">
-        <!-- Hero Section -->
-        <section id="hero"
-            class="min-h-[90vh] flex flex-col justify-center px-6 md:px-10 py-16 md:py-20 bg-transparent relative overflow-hidden">
-            <div
-                class="absolute right-[-10%] top-[10%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-primary/5 blur-[80px] md:blur-[120px] rounded-full">
-            </div>
-            <div class="z-10 max-w-7xl mx-auto flex flex-col items-center text-center">
-                <div
-                    class="font-label text-secondary mb-4 tracking-[0.2em] md:tracking-[0.4em] text-[10px] md:text-sm uppercase font-bold flex justify-center items-center px-4 text-center">
-                    C++ Developer focused on performance, reliability, and scalability, interested in GPU computing
-                </div>
-                <h1
-                    class="text-[13vw] sm:text-[12vw] md:text-[10.5vw] leading-[0.85] font-black uppercase tracking-normal mb-8 font-headline break-words">
-                    SHRI HARI S</h1>
-                <div class="flex justify-center mt-4 px-4">
-                    <p
-                        class="text-base sm:text-lg md:text-xl text-on-surface-variant leading-relaxed font-medium max-w-3xl">
-                        I’m a software developer who enjoys building systems where performance and reliability matter. Using C++, I’ve worked on enterprise applications, primarily focusing on feature development while also contributing to debugging and improving efficiency in production environments.
-                        <br><br>
-                        Separately, I’ve worked with CUDA, applying GPU computing techniques to optimize compute-intensive tasks.
-                    </p>
-                </div>
-            </div>
-            <div
-                class="relative mt-16 md:absolute md:bottom-10 left-0 right-0 w-full flex flex-col md:flex-row justify-center items-center gap-6 md:gap-16 font-label text-[10px] md:text-xs tracking-widest text-on-surface-variant z-20 pb-10 md:pb-0">
-                <div>LOCATION: BANGALORE, INDIA</div>
-                <div class="flex justify-center gap-8">
-                    <a href="https://github.com/b100011111110"
-                        class="hover:text-primary transition-all duration-300">GITHUB</a>
-                    <a href="https://www.linkedin.com/in/shri-hari-s-398a04228/"
-                        class="hover:text-secondary transition-all duration-300">LINKEDIN</a>
-                    <a href="https://leetcode.com/u/glgJ30fzW3/"
-                        class="hover:text-tertiary transition-all duration-300">LEETCODE</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Section Containers -->
-        <div id="projects"></div>
-        <div id="stack"></div>
-        <div id="experience"></div>
-        <div id="stats"></div>
-        <div id="education"></div>
-        <div id="contact"></div>
-    </main>
-</body>
-
-</html>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="nav-wrap container">
+<a class="brand" href="#hero" aria-label="Shri Hari S home"><span class="brand-icon" aria-hidden="true">sh.</span><span>Shri Hari S<span class="brand-period">.</span></span></a>
+<nav id="navigation" aria-label="Main navigation"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#stack">Skills</a><a href="#certifications">Certifications</a><a href="#education">About</a><a class="mobile-contact" href="#contact">Get in touch ↗</a></nav>
+<div class="header-actions"><a class="button button-small header-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></svg><svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+<button class="menu-toggle" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false"><span></span><span></span></button></div>
+</div></header>
+<main id="main">
+<section class="hero container section-box" id="hero">
+<div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> AI WORKFLOWS & MCP · M.TECH IN AI</div>
+<h1>AI workflows.<br>Connected <span class="gradient-text">tools.</span></h1>
+<p>I’m Shri Hari, a developer pursuing an M.Tech in Artificial Intelligence at MIT Manipal. My focus is building AI workflows and MCP integrations that connect models, tools, and data to get useful work done.</p>
+<div class="hero-actions"><a class="button" href="#projects">Explore my work <span aria-hidden="true">↗</span></a><a class="button button-outline" href="resume_Shri_Hari_S.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div>
+<div class="hero-social"><a href="https://github.com/b100011111110">GitHub ↗</a><a href="https://www.linkedin.com/in/shri-hari-s-398a04228/">LinkedIn ↗</a><a href="https://leetcode.com/u/glgJ30fzW3/">LeetCode ↗</a></div></div>
+<div class="hero-art network-art">
+<div class="network-surface" role="img" aria-label="An illustrative mesh of connected dots with fast flowing data. Some nodes dim and disconnect, then recover and reconnect as traffic continues through the active network.">
+<svg class="network-fallback" viewBox="0 0 620 450" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-opacity=".17" stroke-width=".8"><path d="M243.03 208.11L209.61 244.68"/><path d="M243.03 208.11L236.37 135.99"/><path d="M243.03 208.11L284.31 266.39"/><path d="M243.03 208.11L347.76 226.90"/><path d="M243.03 208.11L196.85 172.34"/><path d="M487.83 222.69L482.10 289.98"/><path d="M487.83 222.69L556.49 195.43"/><path d="M487.83 222.69L470.97 167.79"/><path d="M487.83 222.69L583.66 246.45"/><path d="M149.61 178.29L89.05 62.47"/><path d="M149.61 178.29L79.74 211.21"/><path d="M149.61 178.29L196.85 172.34"/><path d="M149.61 178.29L153.30 227.42"/><path d="M149.61 178.29L109.63 120.50"/><path d="M209.61 244.68L284.31 266.39"/><path d="M209.61 244.68L146.36 313.22"/><path d="M209.61 244.68L196.85 172.34"/><path d="M209.61 244.68L153.30 227.42"/><path d="M209.61 244.68L209.68 327.97"/><path d="M51.77 312.91L64.45 258.69"/><path d="M51.77 312.91L79.74 211.21"/><path d="M51.77 312.91L146.36 313.22"/><path d="M51.77 312.91L44.54 361.84"/><path d="M51.77 312.91L153.30 227.42"/><path d="M325.47 343.08L284.31 266.39"/><path d="M325.47 343.08L386.43 294.70"/><path d="M325.47 343.08L146.36 313.22"/><path d="M325.47 343.08L382.43 377.85"/><path d="M325.47 343.08L209.68 327.97"/><path d="M325.47 343.08L455.14 351.84"/><path d="M390.33 97.68L291.08 115.04"/><path d="M390.33 97.68L370.11 50.25"/><path d="M390.33 97.68L388.77 177.20"/><path d="M390.33 97.68L464.64 121.84"/><path d="M64.45 258.69L79.74 211.21"/><path d="M64.45 258.69L146.36 313.22"/><path d="M64.45 258.69L44.54 361.84"/><path d="M64.45 258.69L153.30 227.42"/><path d="M291.08 115.04L236.37 135.99"/><path d="M291.08 115.04L370.11 50.25"/><path d="M291.08 115.04L251.79 71.32"/><path d="M89.05 62.47L79.74 211.21"/><path d="M89.05 62.47L464.64 121.84"/><path d="M89.05 62.47L155.27 48.59"/><path d="M89.05 62.47L109.63 120.50"/><path d="M511.91 98.23L574.58 45.46"/><path d="M511.91 98.23L370.11 50.25"/><path d="M511.91 98.23L556.49 195.43"/><path d="M511.91 98.23L196.85 172.34"/><path d="M511.91 98.23L470.97 167.79"/><path d="M511.91 98.23L464.64 121.84"/><path d="M236.37 135.99L196.85 172.34"/><path d="M236.37 135.99L251.79 71.32"/><path d="M236.37 135.99L155.27 48.59"/><path d="M482.10 289.98L386.43 294.70"/><path d="M482.10 289.98L382.43 377.85"/><path d="M482.10 289.98L455.14 351.84"/><path d="M482.10 289.98L583.66 246.45"/><path d="M284.31 266.39L347.76 226.90"/><path d="M284.31 266.39L209.68 327.97"/><path d="M386.43 294.70L382.43 377.85"/><path d="M386.43 294.70L347.76 226.90"/><path d="M386.43 294.70L455.14 351.84"/><path d="M386.43 294.70L583.66 246.45"/><path d="M574.58 45.46L556.49 195.43"/><path d="M574.58 45.46L470.97 167.79"/><path d="M574.58 45.46L464.64 121.84"/><path d="M370.11 50.25L464.64 121.84"/><path d="M370.11 50.25L251.79 71.32"/><path d="M79.74 211.21L44.54 361.84"/><path d="M79.74 211.21L153.30 227.42"/><path d="M79.74 211.21L109.63 120.50"/><path d="M146.36 313.22L44.54 361.84"/><path d="M146.36 313.22L153.30 227.42"/><path d="M146.36 313.22L209.68 327.97"/><path d="M382.43 377.85L455.14 351.84"/><path d="M44.54 361.84L209.68 327.97"/><path d="M44.54 361.84L109.63 120.50"/><path d="M347.76 226.90L388.77 177.20"/><path d="M556.49 195.43L470.97 167.79"/><path d="M556.49 195.43L583.66 246.45"/><path d="M196.85 172.34L153.30 227.42"/><path d="M196.85 172.34L251.79 71.32"/><path d="M196.85 172.34L155.27 48.59"/><path d="M388.77 177.20L470.97 167.79"/><path d="M388.77 177.20L464.64 121.84"/><path d="M153.30 227.42L209.68 327.97"/><path d="M470.97 167.79L583.66 246.45"/><path d="M470.97 167.79L464.64 121.84"/><path d="M251.79 71.32L155.27 48.59"/><path d="M155.27 48.59L109.63 120.50"/></g><g fill="currentColor" fill-opacity=".65"><circle cx="243.03" cy="208.11" r="3.8"/><circle cx="487.83" cy="222.69" r="4.45"/><circle cx="149.61" cy="178.29" r="5.1"/><circle cx="209.61" cy="244.68" r="5.75"/><circle cx="51.77" cy="312.91" r="3.8"/><circle cx="325.47" cy="343.08" r="4.45"/><circle cx="390.33" cy="97.68" r="5.1"/><circle cx="64.45" cy="258.69" r="5.75"/><circle cx="291.08" cy="115.04" r="3.8"/><circle cx="89.05" cy="62.47" r="4.45"/><circle cx="511.91" cy="98.23" r="5.1"/><circle cx="236.37" cy="135.99" r="5.75"/><circle cx="482.10" cy="289.98" r="3.8"/><circle cx="284.31" cy="266.39" r="4.45"/><circle cx="386.43" cy="294.70" r="5.1"/><circle cx="574.58" cy="45.46" r="5.75"/><circle cx="370.11" cy="50.25" r="3.8"/><circle cx="79.74" cy="211.21" r="4.45"/><circle cx="146.36" cy="313.22" r="5.1"/><circle cx="382.43" cy="377.85" r="5.75"/><circle cx="44.54" cy="361.84" r="3.8"/><circle cx="347.76" cy="226.90" r="4.45"/><circle cx="556.49" cy="195.43" r="5.1"/><circle cx="196.85" cy="172.34" r="5.75"/><circle cx="388.77" cy="177.20" r="3.8"/><circle cx="153.30" cy="227.42" r="4.45"/><circle cx="209.68" cy="327.97" r="5.1"/><circle cx="455.14" cy="351.84" r="5.75"/><circle cx="470.97" cy="167.79" r="3.8"/><circle cx="583.66" cy="246.45" r="4.45"/><circle cx="464.64" cy="121.84" r="5.1"/><circle cx="251.79" cy="71.32" r="5.75"/><circle cx="155.27" cy="48.59" r="3.8"/><circle cx="109.63" cy="120.50" r="4.45"/></g></svg>
+<canvas id="neural-network" aria-hidden="true"></canvas>
+</div>
+<div class="network-caption"><span><span class="network-status-dot" aria-hidden="true"></span>LIVE NETWORK</span><button id="network-motion" type="button" aria-pressed="false" aria-label="Pause service network animation" hidden>Pause animation <span aria-hidden="true">Ⅱ</span></button></div>
+</div>
+</section>
+<div class="expertise-strip"><div class="container strip-inner"><span class="eyebrow">MODELS, TOOLS, AND DATA. CONNECTED.</span><div><span>AI workflows</span><span>MCP</span><span>LangGraph</span><span>Python</span></div></div></div>
+<section class="section container section-box" id="projects">
+<div class="section-heading"><div><div class="eyebrow">01 / SELECTED WORK</div><h2>Ideas, turned into code.</h2></div><a class="text-link" href="https://github.com/b100011111110">All repositories <span aria-hidden="true">↗</span></a></div>
+<div class="project-grid">
+<article class="project-card"><div class="project-art project-art-comet" aria-hidden="true"><svg viewBox="0 0 360 220" class="comet-diagram"><g fill="none" stroke="currentColor" opacity=".3"><ellipse cx="180" cy="105" rx="130" ry="48" transform="rotate(-25 180 105)"/><ellipse cx="180" cy="105" rx="92" ry="76" transform="rotate(30 180 105)"/><path d="M40 180 275 35" stroke-dasharray="3 5"/></g><circle cx="180" cy="105" r="29" fill="#a6b9e7"/><path d="M163 92q15-12 23 2t13 8m-28 12q12-10 25 4" fill="none" stroke="#e7e8f9" stroke-width="3"/><circle cx="275" cy="60" r="6" fill="#f4d2b8"/><path d="m278 57 22-18" stroke="#f4d2b8" stroke-width="3"/><g fill="#9385c1"><circle cx="78" cy="140" r="4"/><circle cx="226" cy="159" r="4"/><circle cx="147" cy="46" r="3"/></g></svg><span class="art-code">orbital data → observatory insights</span><span class="art-corner">01</span></div><div class="project-body"><span class="project-status">Planned project</span><div class="project-title"><h3>Comet Track</h3></div><p>A planned Java and Spring backend for tracking daily positions for around 10,000 asteroids. Planned features include a worldwide observatory index, likely observation matching, and web-based data retrieval.</p><div class="chips"><span>Java</span><span>Spring</span><span>MongoDB</span><span>Kafka</span></div></div></article>
+<article class="project-card"><div class="project-art project-art-docker" aria-hidden="true"><div class="container-diagram"><div class="container-node">01<span>running</span></div><div class="container-node">02<span>running</span></div><div class="container-node">03<span>recover</span></div><div class="container-controller">MCP <span>↔</span> Docker</div></div><span class="art-code">containers, connected and in control.</span><span class="art-corner">02</span></div><div class="project-body"><span class="project-status">Planned project</span><div class="project-title"><h3>Docker MCP</h3></div><p>An MCP server for Docker container management. Planned controls cover start/stop, memory and networking, health monitoring, logs, multi-container connections, and automatic recovery after crashes.</p><div class="chips"><span>Docker</span><span>MCP</span><span>Automation</span></div></div></article>
+<a class="project-card" href="https://github.com/b100011111110/passwordManager" target="_blank" rel="noopener noreferrer"><div class="project-art project-art-password" aria-hidden="true"><div class="password-window"><span class="window-dots">● ● ●</span><div class="lock-icon"></div><span class="password-dots">••••••••••</span></div><span class="art-code">a little more peace of mind.</span><span class="art-corner">03</span></div><div class="project-body"><span class="project-status status-repository">View repository ↗</span><div class="project-title"><h3>Password Manager</h3><span aria-hidden="true">↗</span></div><p>A command-line credential manager built with modern C++, with encryption at its core.</p><div class="chips"><span>C++</span><span>Security</span><span>CLI</span></div></div></a>
+</div></section>
+<section class="experience-section container section-box" id="experience"><div class="section experience-layout"><div class="experience-intro"><div class="eyebrow">02 / EXPERIENCE</div><h2>Built in the<br>real world.</h2><p>An enterprise software foundation in C++ development, debugging, and automation — now shaping how I approach AI workflows and tool integrations.</p><div class="experience-emblem" aria-hidden="true"><span>{</span><div></div><span>}</span></div></div><div class="timeline"><article class="job"><div class="job-meta"><span class="eyebrow">AUG 2024 — AUG 2025</span><span class="job-type">Full-time</span></div><h3>Product Engineer</h3><p class="company">EdgeVerve Systems</p><ul><li>Developed C++ features for enterprise applications across multiple software releases.</li><li>Debugged production and development issues to maintain system stability.</li><li>Supported code migration and feature integration between releases.</li><li>Built automation tools to streamline development workflows.</li></ul></article><article class="job"><div class="job-meta"><span class="eyebrow">FEB 2024 — AUG 2024</span><span class="job-type">Internship</span></div><h3>Engineering Intern</h3><p class="company">EdgeVerve Systems</p><ul><li>Contributed features and fixes to ongoing product development.</li><li>Gained hands-on experience with engineering workflows and debugging.</li></ul></article></div></div></section>
+<section class="section container section-box" id="stack"><div class="section-heading"><div><div class="eyebrow">03 / THE TOOLKIT</div><h2>The tools behind the work.</h2></div><p class="heading-note">Connecting models to tools.<br>Turning steps into workflows.</p></div><div class="skills-grid"><div class="skill-group"><span class="skill-symbol symbol-violet" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 9-9 9-9-9Z"/></svg></span><h3>AI workflows</h3><p>LangChain · LangGraph · Python</p></div><div class="skill-group"><span class="skill-symbol symbol-blue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18m-4-4 4 4-4 4M21 16H3m4-4-4 4 4 4"/></svg></span><h3>MCP & tools</h3><p>Model Context Protocol · Tool integration · Automation</p></div><div class="skill-group"><span class="skill-symbol symbol-pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4 18.4 5.6"/></svg></span><h3>AI & data</h3><p>PyTorch · Neo4j · SQL · MongoDB</p></div><div class="skill-group"><span class="skill-symbol symbol-orange" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m7 6-5 6 5 6m10-12 5 6-5 6M14 3l-4 18"/></svg></span><h3>Engineering</h3><p>C++ · Git · Shell · Debugging</p></div></div>
+<div class="practice-note" id="stats"><div><span class="practice-number">800+</span><span>problems. One ongoing learning habit.</span></div><a class="text-link" href="https://leetcode.com/u/glgJ30fzW3/">Find me on LeetCode ↗</a></div></section>
+<section class="certification-section container section-box" id="certifications"><div class="section"><div class="section-heading"><div><div class="eyebrow">04 / CERTIFICATIONS</div><h2>Learning, put into practice.</h2></div><p class="heading-note">MCP, AI, and graph databases.<br>Learning that supports the work.</p></div><div class="certificate-grid"><a class="certificate" href="https://verify.skilljar.com/c/kbhntddoe3km" target="_blank" rel="noopener noreferrer"><span>Anthropic</span><h4>Model Context Protocol: Advanced Topics</h4><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate" href="https://verify.skilljar.com/c/3whvsfjt7m2d" target="_blank" rel="noopener noreferrer"><span>Anthropic</span><h4>Introduction to Model Context Protocol</h4><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate certificate-featured" href="https://graphacademy.neo4j.com/c/4513d2d8-d3c2-4ee3-b751-d8632358b07e" target="_blank" rel="noopener noreferrer"><span>Neo4j GraphAcademy</span><h4>Graph Data Modeling Fundamentals</h4><p>Graph databases · Data modeling</p><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate certificate-featured" href="https://graphacademy.neo4j.com/c/4f57504c-59ad-49a2-beec-fc2dbf49ec4f" target="_blank" rel="noopener noreferrer"><span>Neo4j GraphAcademy</span><h4>Neo4j Fundamentals</h4><p>Graph databases · Neo4j</p><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate" href="https://verify.skilljar.com/c/ib7xrg5a5mqa" target="_blank" rel="noopener noreferrer"><span>Anthropic</span><h4>AI Capabilities and Limitations</h4><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate" href="https://www.udemy.com/certificate/UC-ee9bf9d6-8fc8-4427-bc97-7b0147e3706a/" target="_blank" rel="noopener noreferrer"><span>Udemy</span><h4>Complete Data Science, Machine Learning, DL, NLP Bootcamp</h4><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate" href="https://www.udemy.com/certificate/UC-a2a242ef-d446-4922-9175-1a617358130f/" target="_blank" rel="noopener noreferrer"><span>Udemy</span><h4>Go - The Complete Guide</h4><span class="cert-arrow" aria-hidden="true">↗</span></a>
+<a class="certificate" href="https://www.udemy.com/certificate/UC-38f7e30d-1e1f-4c42-a763-6bd143ba6623/" target="_blank" rel="noopener noreferrer"><span>Udemy</span><h4>The Complete Python Developer</h4><span class="cert-arrow" aria-hidden="true">↗</span></a></div></div></section>
+<section class="about-section container section-box" id="education"><div class="section"><div class="section-heading"><div><div class="eyebrow">05 / EDUCATION</div><h2>The next chapter.</h2></div></div><div class="education-row education-current"><div><span class="eyebrow">CURRENTLY PURSUING</span><h3>M.Tech in Artificial Intelligence</h3><p>Manipal Institute of Technology, Manipal</p></div><div class="study-badge"><span class="status-dot"></span>AI · In progress</div></div><div class="education-row"><div><span class="eyebrow">2020 — 2024</span><h3>B.E. in Computer Science</h3><p>NMAM Institute of Technology</p></div><div class="education-score"><strong>8.6<span>/10</span></strong><span class="eyebrow">GRADUATING CGPA</span></div></div></div></section>
+<section class="contact-section container section-box" id="contact"><div class="contact-art" aria-hidden="true"></div><div class="contact-copy"><div class="eyebrow">LET’S BUILD SOMETHING</div><h2>Good things start<br>with a conversation.</h2><p>Working on an AI workflow, an MCP integration, or a tool that makes everyday work easier?<br>I’d love to hear about it.</p><a class="button" href="mailto:sshrihari2302@gmail.com">Say hello <span aria-hidden="true">↗</span></a><div class="email-row"><a href="mailto:sshrihari2302@gmail.com">sshrihari2302@gmail.com</a><button id="copy-email-btn" aria-label="Copy email address">Copy <span aria-hidden="true">⧉</span></button><span id="copy-feedback" role="status" aria-live="polite"></span></div></div></section>
+</main>
+<footer class="container"><a class="brand" href="#hero"><span class="brand-icon" aria-hidden="true">sh.</span><span>Shri Hari S.</span></a><span class="footer-note">Made with care. Built with curiosity.</span><div><a href="https://github.com/b100011111110">GitHub ↗</a><a href="https://www.linkedin.com/in/shri-hari-s-398a04228/">LinkedIn ↗</a></div></footer>
+</body></html>

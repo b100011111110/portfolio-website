@@ -1,61 +1,43 @@
-# Design System Strategy: The Kinetic Monolith
+# Portfolio design
 
-## 1. Overview & Creative North Star
-The "Creative North Star" for this design system is **Technical Brutalism**. Unlike standard web layouts that rely on soft shadows and rounded safety, this system embraces the aesthetic of high-end tech hardware and precision engineering. It is a "Kinetic Monolith"—an interface that feels heavy, structural, and unyielding, yet vibrates with the energy of neon emerald accents.
+A light, restrained developer portfolio inspired by the spacious typography, technical details, and pastel gradient illustrations of the LlamaIndex website. Keep Shri Hari's own identity, projects, and experience.
 
-We are breaking the "template" look by leaning into intentional asymmetry and "Over-Scaling." By utilizing massive typography against deep, obsidian-like surfaces, we create an editorial experience that commands attention. This is not a system for the timid; it is a system for builders, developers, and visionaries.
+## Foundation
 
-## 2. Colors & Surface Architecture
-The palette is built on a foundation of "Emerald-Black" neutrals with high-velocity neon accents.
+- Warm off-white background: `#faf9f6`.
+- Charcoal text and primary buttons: `#202020`.
+- Muted supporting text: `#666661`.
+- Thin neutral borders: `#deded8`.
+- Blue, lavender, pink, and peach gradients inside illustrations; keep backgrounds and text mostly neutral.
+- DM Sans for headings and body, IBM Plex Mono for small labels and technical metadata. System fallbacks remain usable without external fonts.
+- Moderate corner radii, subtle hover movement, generous but bounded whitespace.
 
-*   **Primary Core:** The duo of `primary` (#a1ffc2) and `secondary` (#45fec9) provides a piercing contrast against the `background` (#0a0f0d). These colors should be used for high-impact moments and interactive states.
-*   **The "No-Line" Rule for Layout:** Prohibit 1px solid borders for sectioning layout areas. Instead, define boundaries through sharp shifts in background color. For example, a `surface_container_low` section should sit directly against a `surface` background to create a structural break without the "cheapness" of a thin line.
-*   **The "Thick Border" Exception:** In alignment with the brutalist aesthetic, borders are only permitted if they are structural "statements." Use the `outline` (#717773) token at a 2px or 4px weight for specific component framing to simulate industrial casing.
-*   **Signature Textures:** To avoid a "flat" digital feel, apply subtle linear gradients transitioning from `primary` (#a1ffc2) to `primary_container` (#00fc9a) on primary CTAs. This adds a "backlit hardware" soul to the UI.
+## Layout
 
-## 3. Typography: The Editorial Engine
-Typography is the primary visual driver of this system. We use **Manrope** for its structural clarity and **Space Grotesk** for its technical, monospaced-adjacent personality.
+Use a 1200px content width with responsive gutters. A compact sticky navigation leads into a split hero with a short introduction and a live irregular graph of containers and services connected through MCP. Follow with illustrated project cards, an experience section, compact skill groups, prominent certifications followed by current M.Tech and undergraduate education, then a conversation-focused contact section.
 
-*   **Display & Headline:** Use `display-lg` (3.5rem) and `headline-lg` (2rem) aggressively. These should be set in Bold or Extra Bold. Don't be afraid to let headlines overlap container boundaries or bleed toward the edge of the frame to create an "intentional" editorial break.
-*   **Labels & Metadata:** Use `label-md` and `label-sm` (Space Grotesk) for all technical data, micro-copy, and tags. This creates a functional contrast between the "Art" (Manrope) and the "Machine" (Space Grotesk).
-*   **Visual Hierarchy:** Hierarchy is achieved through massive scale shifts. A `display-lg` headline should feel like a physical object on the screen, while `body-md` remains clean and legible for long-form technical documentation.
+At mobile widths, stack the hero and project cards, collapse navigation behind an accessible toggle, and use a single column for skills. Keep all content accessible without JavaScript; JavaScript adds navigation controls, active section markers, and email copying. Do not introduce full-screen loaders or make content depend on fetching HTML fragments.
 
-## 4. Elevation & Depth: Tonal Layering
-In a brutalist system with `ROUND_NONE` (0px corners), we do not use traditional drop shadows. We use **Tonal Layering** and **Atmospheric Glass.**
+## Implementation
 
-*   **The Layering Principle:** Depth is achieved by "stacking" surface-container tiers. Place a `surface_container_highest` (#202724) card on a `surface_container_low` (#0f1512) section. This creates a hard-edged, physical lift that feels like stacked sheets of metal or glass.
-*   **Glassmorphism & Depth:** For floating modals or navigation overlays, use `surface_bright` at 60% opacity with a heavy `backdrop-blur` (20px-40px). This allows the neon emerald glows of the background to bleed through, softening the harshness of the sharp corners while maintaining a premium, high-end tech feel.
-*   **Ambient Glows:** Instead of shadows, use "Glows." If a component needs to feel "active," apply a subtle outer glow using the `primary` color at 10-15% opacity. This mimics the light bleed of a high-end LED display.
+`index.html` contains the complete page, `style.css` defines the responsive theme and CSS illustrations, and `script.js` adds progressive enhancements. No build step or runtime CSS framework is required. Original section fragments remain as source references; the page does not load them.
 
-## 5. Components
+Respect keyboard focus and reduced-motion preferences. Use the original resume, profile links, certificate links, and verified portfolio facts.
 
-### Buttons
-*   **Primary:** Solid `primary` (#a1ffc2) fill with `on_primary` (#00643a) text. 0px corner radius. 2px `outline` transition on hover.
-*   **Secondary:** Ghost style with a 2px `primary` border. Sharp corners.
-*   **Tertiary:** All caps `label-md` (Space Grotesk) with a trailing technical icon (e.g., `->`).
+## Current refinements
 
-### Input Fields
-*   **Style:** `surface_container_lowest` (#000000) background with a 2px `outline_variant` (#444946) bottom border only. 
-*   **Active State:** The border transitions to `secondary` (#45fec9) and thickens to 3px.
-*   **Error State:** Use `error` (#ff716c) with a high-contrast background shift to `error_container`.
+- The global root size is 115%, with rem-based component dimensions for a consistent 15% scale increase. Responsive gutters and SVGs keep smaller screens usable.
+- Light and dark themes use shared color tokens. The toggle remembers the visitor’s choice; the initial theme is light until a choice is saved.
+- Comet Track and Docker MCP are explicitly marked as planned projects. Password Manager retains its repository link.
+- Certifications are always visible above education. Graph Data Modeling Fundamentals and Neo4j Fundamentals each link to their supplied GraphAcademy credentials.
+- Education includes an in-progress M.Tech at Manipal Institute of Technology, Manipal, in Artificial Intelligence, without assumed dates.
 
-### Cards & Lists
-*   **No Dividers:** Absolute prohibition of 1px divider lines. Use `surface_container` color blocking or 32px/48px vertical spacing to separate list items.
-*   **Interactive Cards:** On hover, a card should shift from `surface_container` to `surface_bright` and move 4px up/left to simulate a "physical" click-in.
+## Profile positioning
 
-### Data Chips
-*   **Selection Chips:** High-contrast `tertiary_container` (#cafd00) with 0px radius. These act as "yellow alerts" or highlights within the emerald ecosystem.
+Lead with AI workflows, Model Context Protocol, and connecting models to tools and data. Highlight LangChain, LangGraph, and Python before supporting engineering skills. Preserve the factual C++ experience and Password Manager project. Do not imply the planned projects are already shipped, or that enterprise employment involved AI work. The current degree is M.Tech in Artificial Intelligence at MIT Manipal.
 
-## 6. Do's and Don'ts
+The hero depicts an irregular container-workflow graph with 34 unlabeled dots and a denser web of connections. Packets travel simultaneously in both directions. Staggered simulated failures dim nodes and stop their traffic; recovery rings and restored connections show nodes coming back online. A stable backbone keeps the remaining graph connected. This is an illustrative topology, not a running deployment. The AI & data skill group lists PyTorch, Neo4j, SQL, and MongoDB.
 
-### Do:
-*   **Do** use `0px` border radius for everything. No exceptions.
-*   **Do** use heavy weights for Manrope headlines to anchor the page.
-*   **Do** use "Extreme Spacing." Give oversized elements room to breathe, or pack technical data tightly to look like a terminal.
-*   **Do** use `spaceGrotesk` for all numbers and data points.
+Hero animation: `neural-network.js` renders a responsive, high-DPI canvas service graph with fast bidirectional data flow and gently drifting dots, simulated node failures, and automatic recovery. An inline SVG is the static fallback. A pause/resume button and reduced-motion preference control animation; rendering pauses when the hero is outside the viewport or the page is hidden. Colors follow the selected theme. Previously generated raster assets remain in `assets/` but are no longer loaded by the page.
 
-### Don't:
-*   **Don't** use soft, grey drop shadows. If it doesn't have a hard edge, it doesn't belong.
-*   **Don't** use 1px lines for decoration. Lines must be 2px+ and serve a structural purpose.
-*   **Don't** use pastel colors. Stick to the high-contrast emerald/neon and deep charcoal values provided.
-*   **Don't** use center alignment for large blocks of text. Stick to strong left-aligned grids to maintain the "monolithic" feel.
+Each main page section sits in its own rounded, thin-bordered box, aligned to the shared container. Section padding and vertical gaps are consistent and responsive. The service network itself remains unframed, without a separate title bar or dot grid. Its animation and pause control remain intact.
